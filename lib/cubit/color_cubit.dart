@@ -13,4 +13,8 @@ class ColorCubit extends Cubit<Color> {
     final blue = random.nextInt(256);
     emit(Color.fromRGBO(red, green, blue, 1));
   }
+
+  void changeColor(Color color) {
+    emit(color);
+  }
 }
