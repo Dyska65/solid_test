@@ -18,7 +18,7 @@ void main() {
     expect(colorCubit.state, Colors.white);
   });
 
-  blocTest<ColorCubit, Color>(
+  blocTest<ColorCubit, BackgroundColor>(
     'Function generateColor() have to emits type Color',
     setUp: () {},
     build: () => colorCubit,

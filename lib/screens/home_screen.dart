@@ -13,26 +13,31 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ColorCubit, Color>(
+    return BlocBuilder<ColorCubit, BackgroundColor>(
       builder: (context, color) {
+        print(color.isBright);
         return Scaffold(
           appBar: AppBar(
-            title: const Text('Color'),
+            title: Text('Color'),
             actions: [
               IconButton(
                 onPressed: () {
-                  _showDialog(color);
+                  _showDialog(color.color);
                 },
                 icon: const Icon(Icons.edit),
               )
             ],
           ),
-          backgroundColor: color,
+          backgroundColor: color.color,
           body: GestureDetector(
             behavior: HitTestBehavior.translucent,
             onTap: context.read<ColorCubit>().generateColor,
-            child: const Center(
-              child: Text("Hey there"),
+            child: Center(
+              child: Text(
+                "Hey there",
+                style: TextStyle(
+                    color: color.isBright ? Colors.black : Colors.white),
+              ),
             ),
           ),
         );
